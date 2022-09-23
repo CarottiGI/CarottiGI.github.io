@@ -1,35 +1,17 @@
+let = zBereich;
+
 function setup() {
-  limitx = 600;
-  limity = 400;
-  createCanvas(limitx, limity);
-  speed = 15;
-  x = 50;
-  vx = speed;
-  y = 50;
-  vy = speed;
-  d = 30;
-  switchbg = 0;
+  zBereich = createCanvas(windowWidth, windowHeight);
+  zBereich.position(0, 0); //Links oben
+  zBereich.style('z-index', '-1'); //Verschiebung auf der Z-Achse
+
+
 }
 
 function draw() {
-  if (switchbg == 0) {
-    background(75);
-  } else {
-    background(255);
+  fill(255*mouseX/windowWidth,255*mouseY/windowWidth,15)
+  if (mouseIsPressed) {
+    noStroke();
+    circle(mouseX,mouseY,20);
   }
-  if (x >= limitx-(d/2)) {
-    vx = -1*vx;
-  } if (x <= 0+(d/2)) {
-    vx = -1*vx;
-  } 
-  
-  if (y >= limity-(d/2)) {
-    vy = -1*vy;
-  } if (y < 15) {
-    vy = -1*vy;
-  }
-  x = x+vx
-  y = y+vy
-  fill(255, 150, 100);
-  circle(x, y, d);
 }
